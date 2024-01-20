@@ -1,1 +1,50 @@
-<p>order-listing works!</p>
+<div class="wrapper">
+    <div class="listing-page">
+      <!-- Page Title -->
+      <div class="page-heading">
+        <h1>Order Listing</h1>
+        <button
+          [routerLink]="['/admin/hotel/add']"
+          routerLinkActive="router-link-active"
+          class="btn btn-primary btn-top"
+        >
+          <span class="material-symbols-outlined"> add </span> Order
+        </button>
+      </div>
+  
+      <div class="table table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <td>Hotel Name</td>
+              <td>Type</td>
+              <td>Address</td>
+              <td>About</td>
+              <td>Action</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let hotel of hotelList; let i = index">
+              <td>{{ hotel.name }}</td>
+              <td>{{ hotel.type }}</td>
+              <td>{{ hotel.address }}</td>
+              <td>{{ hotel.about }}</td>
+              <td class="btn-group gap-2">
+                <button
+                  class="btn btn-outline-success"
+                  [routerLink]="['/admin/hotel/edit', i]"
+                  routerLinkActive="router-link-active"
+                >
+                  <span class="material-symbols-outlined"> edit </span>
+                </button>
+                <button class="btn btn-outline-danger">
+                  <span class="material-symbols-outlined"> delete </span>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  

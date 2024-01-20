@@ -1,0 +1,8 @@
+.body {
+  width: calc(100% - 21rem);
+  margin-left: 21rem;
+}
+
+.layout {
+    display: flex;
+}

@@ -1,20 +1,20 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { HotelListingComponent } from './hotel-listing/hotel-listing.component';
-import { AddUpdateHotelComponent } from './hotel-listing/add-update-hotel/add-update-hotel.component';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { HotelListingComponent } from "./hotel-listing/hotel-listing.component";
+import { AddUpdateHotelComponent } from "./hotel-listing/add-update-hotel/add-update-hotel.component";
 
 const routes: Routes = [
-  { path: '', redirectTo: 'listing', pathMatch: 'full' },
+  { path: "", redirectTo: "listing", pathMatch: "full" },
   {
-    path: 'listing',
+    path: "listing",
     component: HotelListingComponent,
-    pathMatch: 'full',
+    pathMatch: "full",
   },
-  { path: 'add', component: AddUpdateHotelComponent, pathMatch: 'full' },
+  { path: "add", component: AddUpdateHotelComponent, pathMatch: "full" },
   {
-    path: 'update/:id',
+    path: "edit/:id",
     component: AddUpdateHotelComponent,
-    pathMatch: 'full',
+    pathMatch: "full",
   },
 ];
 

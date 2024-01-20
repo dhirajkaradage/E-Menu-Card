@@ -1,0 +1,82 @@
+.sidebar {
+  width: 20rem !important;
+  background-color: rgb(65, 85, 85);
+  height: 100vh;
+  position: fixed;
+}
+
+.sidebar-content {
+  padding: 0.5rem;
+  height: 100%;
+  width: 100%;
+}
+
+.logo {
+  height: 50px;
+  max-width: 200px;
+  background-color: azure;
+  margin-inline: auto;
+}
+
+.nav-list {
+  display: flex;
+  padding: 0.5rem;
+  gap: 1rem;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  min-width: 100% !important;
+  color: white !important;
+}
+
+.nav-item {
+  display: flex;
+  justify-content: space-between;
+  color: white !important;
+}
+
+.nav-item:hover {
+  color: black !important;
+}
+
+.item-name {
+  margin-top: 0.2rem;
+}
+
+li.main-menu {
+  min-height: 3rem;
+  padding: 1rem 1rem 1rem 3rem;
+  color: white !important;
+}
+
+.main-menu:hover {
+  cursor: pointer;
+  background-color: aqua;
+  color: black !important;
+  border-radius: 20px !important;
+}
+.main-menu:hover > .nav-item {
+  color: black !important;
+}
+
+.sub-menu {
+  display: none;
+  transition: all 2s ease-in-out !important;
+  margin-top: 0.5rem;
+}
+
+.active {
+  display: block !important;
+  transition: all 2s ease-in-out !;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}

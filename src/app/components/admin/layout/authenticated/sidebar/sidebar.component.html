@@ -1,1 +1,32 @@
-<p>sidebar works!</p>
+<div class="sidebar">
+  <div class="sidebar-content">
+    <div class="logo">asdf</div>
+    <ul class="nav-list">
+      <li
+        class="main-menu"
+        *ngFor="let menu of sideBarMenus; let i = index"
+        (click)="openSubmenu(i)"
+      >
+        <a class="nav-item">
+          <span class="item-name">
+            {{ menu.parentName }}
+          </span>
+          <span class="item-icon" *ngIf="menu.childs.length > 0"
+            ><span class="material-symbols-outlined">
+              chevron_right
+            </span></span
+          >
+        </a>
+        <ul class="sub-menu" *ngIf="menu.childs.length > 0">
+          <li *ngFor="let submenu of menu.childs">
+            <a
+              [routerLink]="[submenu.route]"
+              routerLinkActive="router-link-active"
+              >{{ submenu.name }}</a
+            >
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>

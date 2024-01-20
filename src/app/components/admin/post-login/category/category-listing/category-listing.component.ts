@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./category-listing.component.css']
 })
 export class CategoryListingComponent {
-
+  hotelList: Array<any> = [
+    { name: "Tara", type: "Veg", address: "ichalkaranji", about: "Testing" },
+    { name: "Cabsons", type: "BOTH", address: "ichalkaranji", about: "Testing" },
+  ];
 }
