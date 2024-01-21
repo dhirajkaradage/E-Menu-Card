@@ -9,6 +9,7 @@
   width: 100%;
   height: 100%;
   padding-top: 5rem;
+  padding-left: 1rem;
 }
 
 .page-heading {
@@ -21,4 +22,9 @@
   display: flex;
   min-height: 30px;
   align-items: center;
+}
+
+.form-body {
+  width: 100%;
+  padding: 2rem 3rem 2rem 0rem;
 }

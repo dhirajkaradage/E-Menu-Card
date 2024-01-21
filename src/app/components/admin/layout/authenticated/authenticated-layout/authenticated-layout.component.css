@@ -1,6 +1,7 @@
 .body {
-  width: calc(100% - 21rem);
-  margin-left: 21rem;
+  width: calc(100% - 20rem);
+  margin-left: 20rem;
+  padding: 1rem;
 }
 
 .layout {

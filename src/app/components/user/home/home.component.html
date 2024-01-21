@@ -1,3 +1,21 @@
 <app-navbar></app-navbar>
-Home
+<div class="body">
+  <div class="product-section">
+    <div class="card" *ngFor="let product of productList">
+      <div class="imgBox">
+        <img
+          [src]="product.url"
+          alt="mouse corsair"
+          class="mouse"
+        />
+      </div>
+
+      <div class="contentBox">
+        <h3>{{ product.name }}</h3>
+        <h2 class="price">{{product.price}} rs </h2>
+        <a href="#" class="buy">+ Cart</a>
+      </div>
+    </div>
+  </div>
+</div>
 <app-footer></app-footer>
