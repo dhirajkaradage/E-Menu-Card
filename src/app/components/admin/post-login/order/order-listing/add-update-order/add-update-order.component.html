@@ -2,14 +2,15 @@
   <div class="listing-page">
     <!-- Page Title -->
     <div class="page-heading">
-      <h1>Add Order</h1>
+      <h1>Add Order</h1> 
     </div>
+    <form [formGroup]="addUpdateOrderForm" (ngSubmit)="onSubmit()">
     <div class="form-body">
       <div class="row">
         <div class="col-md-4">
           <div class="form-group mt-3">
             <label for="" class="form-label">Name</label>
-            <input type="text" class="form-control" />
+            <input type="text" formControlName="name" class="form-control" />
           </div>
         </div>
       </div>
@@ -17,13 +18,14 @@
         <div class="col-md-4">
           <div class="form-group mt-3">
             <label for="" class="form-label">Type</label>
-            <input type="text" class="form-control" />
+            <input type="text" formControlName="type"class="form-control" />
           </div>
         </div>
 
         <div class="col-md-12">
           <div class="form-group mt-3">
-            <label for="" class="form-label">Address</label>
+            <label for=""formControlName="address" class="form-label">Address</label>
+            
             <textarea
               name=""
               id=""
@@ -35,7 +37,8 @@
         </div>
         <div class="col-md-12">
           <div class="form-group mt-3">
-            <label for="" class="form-label">About</label>
+            <label for="" formControlName="about" class="form-label">About</label>
+           
             <textarea
               name=""
               id=""
@@ -52,5 +55,6 @@
         <button type="submit" class="btn btn-secondary col-2">Cancel</button>
       </div>
     </div>
+  </form>
   </div>
 </div>

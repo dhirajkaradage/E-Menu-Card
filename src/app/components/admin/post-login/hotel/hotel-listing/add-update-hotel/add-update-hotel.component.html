@@ -2,55 +2,165 @@
   <div class="listing-page">
     <!-- Page Title -->
     <div class="page-heading">
-      <h1>Add Hotel</h1>
+      <h1>{{ isEdit ? "Edit Hotel" : "Add Hotel" }}</h1>
     </div>
-    <div class="form-body">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="form-group mt-3">
-            <label for="" class="form-label">Name</label>
-            <input type="text" class="form-control" />
+    <form [formGroup]="addUpdateHotelForm">
+      {{ addUpdateHotelForm.value | json }}
+      <div class="form-body">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group mt-3">
+              <label for="" class="form-label">Name</label>
+              <input type="text" formControlName="name" class="form-control" />
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group mt-3">
+              <label for="" class="form-label">mobileNumber</label>
+              <input
+                type="text"
+                maxlength="10"
+                formControlName="mobileNumber"
+                class="form-control"
+              />
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="form-group mt-3">
-            <label for="" class="form-label">Type</label>
-            <input type="text" class="form-control" />
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group mt-3">
+              <label for="" class="form-label">Type :- </label><br />
+
+              <input
+                type="radio"
+                formControlName="type"
+                name="type"
+                value="VEG"
+                id="veg"
+              />
+              <label for="veg">Veg</label>
+
+              <input
+                type="radio"
+                formControlName="type"
+                name="type"
+                value="NON_VEG"
+                id="nonVeg"
+              />
+              <label for="nonVeg">Non-Veg</label>
+
+              <input
+                type="radio"
+                formControlName="type"
+                name="type"
+                value="VEG_AND_NON_VEG"
+                id="both"
+              />
+              <label for="both">Both</label>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="row" formGroupName="address">
+              <h5>Address</h5>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="" class="form-label">pincode</label>
+                  <input
+                    type="text"
+                    formControlName="pincode"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="" class="form-label">country</label>
+                  <input
+                    type="text"
+                    formControlName="country"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="" class="form-label">state</label>
+                  <input
+                    type="text"
+                    formControlName="state"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="" class="form-label">district</label>
+                  <input
+                    type="text"
+                    formControlName="district"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="" class="form-label">city</label>
+                  <input
+                    type="text"
+                    formControlName="city"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="" class="form-label">landmark</label>
+                  <input
+                    type="text"
+                    formControlName="landmark"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="" class="form-label">shopNumber</label>
+                  <input
+                    type="text"
+                    formControlName="shopNumber"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group mt-3">
+              <label for="" class="form-label">About</label>
+              <textarea
+                formControlName="description"
+                name=""
+                id=""
+                cols="30"
+                rows="2"
+                class="form-control"
+              ></textarea>
+            </div>
           </div>
         </div>
 
-        <div class="col-md-12">
-          <div class="form-group mt-3">
-            <label for="" class="form-label">Address</label>
-            <textarea
-              name=""
-              id=""
-              cols="30"
-              rows="2"
-              class="form-control"
-            ></textarea>
-          </div>
-        </div>
-        <div class="col-md-12">
-          <div class="form-group mt-3">
-            <label for="" class="form-label">About</label>
-            <textarea
-              name=""
-              id=""
-              cols="30"
-              rows="2"
-              class="form-control"
-            ></textarea>
-          </div>
+        <div class="d-flex justify-content-start gap-2 mt-5">
+          <button
+            (click)="onSubmit()"
+            type="submit"
+            class="btn btn-primary col-2"
+          >
+            Submit
+          </button>
+          <button type="submit" class="btn btn-secondary col-2">Cancel</button>
         </div>
       </div>
-
-      <div class="d-flex justify-content-start gap-2 mt-5">
-        <button type="submit" class="btn btn-primary col-2">Submit</button>
-        <button type="submit" class="btn btn-secondary col-2">Cancel</button>
-      </div>
-    </div>
+    </form>
   </div>
 </div>

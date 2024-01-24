@@ -16,11 +16,11 @@
       <table class="table">
         <thead>
           <tr>
-            <td>Hotel Name</td>
-            <td>Type</td>
-            <td>Address</td>
-            <td>About</td>
-            <td>Action</td>
+            <th>Hotel Name</th>
+            <th>Type</th>
+            <th>Address</th>
+            <th>About</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -32,7 +32,7 @@
             <td class="btn-group gap-2">
               <button
                 class="btn btn-outline-success"
-                [routerLink]="['/admin/hotel/edit', i]"
+                [routerLink]="['/admin/hotel/edit/',hotel.id]"
                 routerLinkActive="router-link-active"
               >
                 <span class="material-symbols-outlined"> edit </span>

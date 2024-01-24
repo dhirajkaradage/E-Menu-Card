@@ -4,18 +4,19 @@
     <div class="page-heading">
       <h1>Add Product</h1>
     </div>
+    <form [formGroup]="AddUpdateProductForm" (ngSubmit)="onSubmit()">
     <div class="form-body">
       <div class="row">
         <div class="col-md-4">
           <div class="form-group mt-3">
             <label for="" class="form-label">Select Hotel</label>
-            <input type="text" class="form-control" />
+            <input type="text"formContrlolName="selectHotel" class="form-control" />
           </div>
         </div>
         <div class="col-md-4">
           <div class="form-group mt-3">
             <label for="" class="form-label">Select Type</label>
-            <input type="text" class="form-control" />
+            <input type="text"formContrlolName="selectType" class="form-control" />
           </div>
         </div>
       </div>
@@ -23,25 +24,26 @@
         <div class="col-md-4">
           <div class="form-group mt-3">
             <label for="" class="form-label">Product Name</label>
-            <input type="text" class="form-control" />
+            <input type="text"formContrlolName="productName" class="form-control" />
           </div>
         </div>
         <div class="col-md-4">
           <div class="form-group mt-3">
             <label for="" class="form-label">Price</label>
-            <input type="text" class="form-control" />
+            <input type="text"formContrlolName="price" class="form-control" />
           </div>
         </div>
         <div class="col-md-4">
           <div class="form-group mt-3">
             <label for="" class="form-label">Discount Price</label>
-            <input type="text" class="form-control" />
+            <input type="text"formContrlolName="discountPrice" class="form-control" />
           </div>
         </div>
 
         <div class="col-md-12">
           <div class="form-group mt-3">
-            <label for="" class="form-label">About</label>
+            <label for=""formContrlolName="about" class="form-label">About</label>
+            
             <textarea
               name=""
               id=""
@@ -58,5 +60,6 @@
         <button type="submit" class="btn btn-secondary col-2">Cancel</button>
       </div>
     </div>
+  </form>
   </div>
 </div>
