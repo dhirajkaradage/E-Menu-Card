@@ -4,62 +4,84 @@
     <div class="page-heading">
       <h1>Add Product</h1>
     </div>
-    <form [formGroup]="AddUpdateProductForm" (ngSubmit)="onSubmit()">
-    <div class="form-body">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="form-group mt-3">
-            <label for="" class="form-label">Select Hotel</label>
-            <input type="text"formContrlolName="selectHotel" class="form-control" />
+    <form [formGroup]="productForm">
+      <div class="form-body">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group mt-3">
+              <label for="" class="form-label">Select Hotel</label>
+              <input
+                type="text"
+                formContrlolName="selectHotel"
+                class="form-control"
+              />
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group mt-3">
+              <label for="" class="form-label">Select Type</label>
+              <input
+                type="text"
+                formContrlolName="selectType"
+                class="form-control"
+              />
+            </div>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="form-group mt-3">
-            <label for="" class="form-label">Select Type</label>
-            <input type="text"formContrlolName="selectType" class="form-control" />
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group mt-3">
+              <label for="" class="form-label">Product Name</label>
+              <input
+                type="text"
+                formContrlolName="productName"
+                class="form-control"
+              />
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="form-group mt-3">
-            <label for="" class="form-label">Product Name</label>
-            <input type="text"formContrlolName="productName" class="form-control" />
+          <div class="col-md-4">
+            <div class="form-group mt-3">
+              <label for="" class="form-label">Price</label>
+              <input
+                type="text"
+                formContrlolName="price"
+                class="form-control"
+              />
+            </div>
           </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group mt-3">
-            <label for="" class="form-label">Price</label>
-            <input type="text"formContrlolName="price" class="form-control" />
+          <div class="col-md-4">
+            <div class="form-group mt-3">
+              <label for="" class="form-label">Discount Price</label>
+              <input
+                type="text"
+                formContrlolName="discountPrice"
+                class="form-control"
+              />
+            </div>
           </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group mt-3">
-            <label for="" class="form-label">Discount Price</label>
-            <input type="text"formContrlolName="discountPrice" class="form-control" />
+
+          <div class="col-md-12">
+            <div class="form-group mt-3">
+              <label for="" formContrlolName="about" class="form-label"
+                >About</label
+              >
+
+              <textarea
+                name=""
+                id=""
+                cols="30"
+                rows="2"
+                class="form-control"
+              ></textarea>
+            </div>
           </div>
         </div>
 
-        <div class="col-md-12">
-          <div class="form-group mt-3">
-            <label for=""formContrlolName="about" class="form-label">About</label>
-            
-            <textarea
-              name=""
-              id=""
-              cols="30"
-              rows="2"
-              class="form-control"
-            ></textarea>
-          </div>
+        <div class="d-flex justify-content-start gap-2 mt-5">
+          <button type="submit" class="btn btn-primary col-2">Submit</button>
+          <button type="submit" class="btn btn-secondary col-2">Cancel</button>
         </div>
       </div>
-
-      <div class="d-flex justify-content-start gap-2 mt-5">
-        <button type="submit" class="btn btn-primary col-2">Submit</button>
-        <button type="submit" class="btn btn-secondary col-2">Cancel</button>
-      </div>
-    </div>
-  </form>
+    </form>
   </div>
 </div>
