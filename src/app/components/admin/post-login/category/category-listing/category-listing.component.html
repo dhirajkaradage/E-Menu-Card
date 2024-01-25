@@ -24,11 +24,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let hotel of hotelList; let i = index">
-            <td>{{ hotel.name }}</td>
-            <td>{{ hotel.type }}</td>
-            <td>{{ hotel.address }}</td>
-            <td>{{ hotel.about }}</td>
+          <tr *ngFor="let category of categoryList; let i = index">
+            <td>{{ category?.name }}</td>
+            <td>{{ category?.type }}</td>
+            <td>{{ category?.address }}</td>
+            <td>{{ category?.about }}</td>
             <td class="btn-group gap-2">
               <button
                 class="btn btn-outline-success"

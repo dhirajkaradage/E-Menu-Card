@@ -4,7 +4,7 @@
     <div class="page-heading">
       <h1>Add Category</h1>
     </div>
-    <form [formGroup]="addUpdateCategoryForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="addUpdateCategoryForm">
       <div class="form-body">
         <div class="row">
           <div class="col-md-4">
@@ -12,7 +12,6 @@
               <label for="" class="form-label">Select Hotel</label>
               <input
                 type="text"
-                formControlName="selectHotel"
                 class="form-control"
               />
             </div>
@@ -24,7 +23,6 @@
               <label for="" class="form-label">Category</label>
               <input
                 type="text"
-                formControlName="category"
                 class="form-control"
               />
             </div>

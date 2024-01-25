@@ -13,12 +13,27 @@ export class HotelService {
     return this.http.post(`${baseUrl}saveHotel`, hotelFormValue);
   }
 
-  getHotelList():Observable<any>{
-    return this.http.get(`${baseUrl}hotels`);   
+  updateHotel(hotelFormValue: any, hotelId: any): Observable<any> {
+    return this.http.put(`${baseUrl}updateHotel/${hotelId}`, hotelFormValue);
   }
 
-  postHotelList(hotelId: any): Observable<any>{
-    return this.http.get(`${baseUrl}/viewHotel/${hotelId}`); 
+  getHotelList(): Observable<any> {
+    return this.http.get(`${baseUrl}hotelList`);
+  }
+
+  getHotelsPagination(page: any, size: any): Observable<any> {
+    let params = {
+      page: page,
+      size: size,
+    };
+    return this.http.get(`${baseUrl}hotels`, { params: params });
+  }
+
+  getHotelDetails(hotelId: any): Observable<any> {
+    return this.http.get(`${baseUrl}/viewHotel/${hotelId}`);
+  }
+
+  deleteHotel(hotelId: any): Observable<any> {
+    return this.http.delete(`${baseUrl}deleteHotel/${hotelId}`);
   }
 }
-      

@@ -31,7 +31,7 @@ export class AddUpdateHotelComponent implements OnInit {
     if (this.hotelId) {
       this.isEdit = true;
     }
-    
+
     this.addUpdateHotelForm = this.fb.group({
       name: ["", Validators.required],
       type: ["", Validators.required],
@@ -78,4 +78,6 @@ export class AddUpdateHotelComponent implements OnInit {
       this.addUpdateHotelForm.markAllAsTouched();
     }
   }
+
+  updateHotel() {}
 }
