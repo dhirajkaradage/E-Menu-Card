@@ -30,7 +30,7 @@ export class HotelService {
   }
 
   getHotelDetails(hotelId: any): Observable<any> {
-    return this.http.get(`${baseUrl}/viewHotel/${hotelId}`);
+    return this.http.get(`${baseUrl}viewHotel/${hotelId}`);
   }
 
   deleteHotel(hotelId: any): Observable<any> {

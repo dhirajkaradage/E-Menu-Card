@@ -2,36 +2,83 @@
   <div class="listing-page">
     <!-- Page Title -->
     <div class="page-heading">
-      <h1>Add Category</h1>
+      <h1>{{ isEdit ? "Edit" : "Add" }} Category</h1>
     </div>
     <form [formGroup]="addUpdateCategoryForm">
+      {{ addUpdateCategoryForm.value | json }}
       <div class="form-body">
         <div class="row">
           <div class="col-md-4">
-            <div class="form-group mt-3">
+            <div class="form-group mt-3" formGroupName="hotel">
               <label for="" class="form-label">Select Hotel</label>
-              <input
-                type="text"
-                class="form-control"
-              />
+              <select
+                class="form-select"
+                formControlName="id"
+                name=""
+                id=""
+                [ngClass]="{
+                  'is-invalid':
+                    hotelControl['id'].invalid &&
+                    (hotelControl['id'].dirty || hotelControl['id'].touched)
+                }"
+              >
+                <option [ngValue]="null">Please Select Hotel</option>
+                <option *ngFor="let hotel of hotelList" [ngValue]="hotel.id">
+                  {{ hotel.name }}
+                </option>
+              </select>
+              <small
+                class="text-danger"
+                *ngIf="
+                  hotelControl['id'].invalid &&
+                  (hotelControl['id'].dirty || hotelControl['id'].touched)
+                "
+                >Hotel is mandatory</small
+              >
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-md-4">
             <div class="form-group mt-3">
-              <label for="" class="form-label">Category</label>
+              <label for="" class="form-label">Category Name</label>
               <input
                 type="text"
                 class="form-control"
+                formControlName="name"
+                [ngClass]="{
+                  'is-invalid':
+                    control['name'].invalid &&
+                    (control['name'].dirty || control['name'].touched)
+                }"
               />
+              <small
+                class="text-danger"
+                *ngIf="
+                  control['name'].invalid &&
+                  (control['name'].dirty || control['name'].touched)
+                "
+                >Category name is mandatory</small
+              >
             </div>
           </div>
         </div>
 
         <div class="d-flex justify-content-start gap-2 mt-5">
-          <button type="submit" class="btn btn-primary col-2">Submit</button>
-          <button type="submit" class="btn btn-secondary col-2">Cancel</button>
+          <button
+            type="submit"
+            class="btn btn-primary col-2"
+            (click)="submit()"
+          >
+            Submit
+          </button>
+          <button
+            type="submit"
+            class="btn btn-secondary col-2"
+            [routerLink]="['/admin/category/listing']"
+          >
+            Cancel
+          </button>
         </div>
       </div>
     </form>
