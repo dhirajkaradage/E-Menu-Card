@@ -7,6 +7,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { CartComponent } from './cart/cart.component';
 import { OrderComponent } from './order/order.component';
 import { FooterComponent } from './footer/footer.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +20,9 @@ import { FooterComponent } from './footer/footer.component';
   ],
   imports: [
     CommonModule,
-    UserRoutingModule
+    UserRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class UserModule { }

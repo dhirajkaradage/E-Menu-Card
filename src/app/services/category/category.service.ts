@@ -13,10 +13,7 @@ export class CategoryService {
   }
 
   updateCategory(categoryFormValue: any, categoryId: any): Observable<any> {
-    return this.http.put(
-      `${baseUrl}category/${categoryId}`,
-      categoryFormValue
-    );
+    return this.http.put(`${baseUrl}category/${categoryId}`, categoryFormValue);
   }
 
   getCategoryList(): Observable<any> {
@@ -27,6 +24,10 @@ export class CategoryService {
     return this.http.get(`${baseUrl}category/${categoryId}`);
   }
 
+  getCategoryByHotelId(hotelId: any): Observable<any> {
+    return this.http.get(`${baseUrl}categories/${hotelId}`);
+  }
+
   getCategoryListPagination(page: any, size: any): Observable<any> {
     let params = {
       page: page,
@@ -35,5 +36,7 @@ export class CategoryService {
     return this.http.get(`${baseUrl}allCategories`, { params: params });
   }
 
-
+  getProductsByCategoryId(categoryId: any): Observable<any> {
+    return this.http.get(`${baseUrl}allProducts/${categoryId}`);
+  }
 }
