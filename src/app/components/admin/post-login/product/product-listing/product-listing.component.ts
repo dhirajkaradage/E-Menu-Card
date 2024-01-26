@@ -9,7 +9,7 @@ import { ProductService } from "src/app/services/product/product.service";
 export class ProductListingComponent {
   productList: Array<any> = [];
   page: number = 0;
-  size: number = 0;
+  size: number = 10;
   constructor(private productService: ProductService) {}
   ngOnInit() {
     this.getProductListPagination();

@@ -16,23 +16,23 @@
       <table class="table">
         <thead>
           <tr>
-            <td>Hotel Name</td>
-            <td>Type</td>
-            <td>Address</td>
-            <td>About</td>
+            <td>Product Name</td>
+            <td>Hotel</td>
+            <td>Category</td>
+            <td>Price</td>
             <td>Action</td>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let product of productList; let i = index">
             <td>{{ product?.name }}</td>
-            <td>{{ product?.type }}</td>
-            <td>{{ product?.address }}</td>
-            <td>{{ product?.about }}</td>
+            <td>{{ product?.hotel?.name }}</td>
+            <td>{{ product?.category?.name }}</td>
+            <td>{{ product?.sellingPrice }}</td>
             <td class="btn-group gap-2">
               <button
                 class="btn btn-outline-success"
-                [routerLink]="['/admin/hotel/edit', i]"
+                [routerLink]="['/admin/product/edit', product.id]"
                 routerLinkActive="router-link-active"
               >
                 <span class="material-symbols-outlined"> edit </span>

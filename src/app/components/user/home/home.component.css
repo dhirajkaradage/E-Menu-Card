@@ -68,11 +68,12 @@ body {
 
 .card .imgBox {
   position: relative;
-  width: 50%;
+  width: 50% !important;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 20px;
+  padding: 20px;
   z-index: 1;
 }
 

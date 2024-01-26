@@ -3,23 +3,28 @@
     <div class="logo">LOGO</div>
     <div class="search-bar">
       <div class="input-group">
-        <input type="text" />
-        searchIcon
+        <input type="text" class="form-control" />
+        <span class="material-symbols-outlined searchIcon"> search </span>
       </div>
     </div>
     <div class="card-order-section">
-      <span class="cart-icon">cart</span>
-      <span class="order-icon">order</span>
+      <span class="cart-icon"
+        ><span class="material-symbols-outlined"> shopping_cart </span></span
+      >
+      <span class="order-icon"
+        ><span class="material-symbols-outlined"> list_alt </span></span
+      >
     </div>
   </div>
 
   <div class="category-list-section">
     <ul class="category-list">
-      <li>abc asdf</li>
-      <li>xyz 23rwe</li>
-      <li>xyz as</li>
-      <li>xyzas</li>
-      <li>xyzf asdf</li>
+      <li class="category"
+        *ngFor="let category of categoryList"
+        (click)="setActiveCategory(category.id)"
+      >
+        {{ category.name }}
+      </li>
     </ul>
   </div>
 </div>

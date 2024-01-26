@@ -12,6 +12,13 @@ export class ProductService {
     return this.http.post(`${baseUrl}product`, productFormValue);
   }
 
+  updateProduct(productFormValue: any, productId: any): Observable<any> {
+    return this.http.put(
+      `${baseUrl}updateProduct/${productId}`,
+      productFormValue
+    );
+  }
+
   getAllProducts(): Observable<any> {
     return this.http.get(`${baseUrl}productList`);
   }

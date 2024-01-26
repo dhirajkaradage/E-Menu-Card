@@ -1,19 +1,18 @@
 <app-navbar></app-navbar>
 <div class="body">
-  <div class="product-section">
+  <div class="product-section" *ngIf="productList">
     <div class="card" *ngFor="let product of productList">
       <div class="imgBox">
         <img
-          [src]="product.url"
-          alt="mouse corsair"
+          [src]="'./../../../../assets/products/' + product?.imageLabel"
           class="mouse"
         />
       </div>
 
       <div class="contentBox">
-        <h3>{{ product.name }}</h3>
-        <h2 class="price">{{product.price}} rs </h2>
-        <a href="#" class="buy">+ Cart</a>
+        <h3>{{ product?.name }}</h3>
+        <h2 class="price">{{ product?.sellingPrice }} rs</h2>
+        <button (click)="addToCart(product)" class="buy">+ Cart</button>
       </div>
     </div>
   </div>
