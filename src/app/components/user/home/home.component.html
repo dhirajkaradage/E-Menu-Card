@@ -16,5 +16,10 @@
       </div>
     </div>
   </div>
+  <div class="product-section" *ngIf="productList.length == 0">
+    <div class="no-product-message">
+      <h1>No Products Available For This Category</h1>
+    </div>
+  </div>
 </div>
 <app-footer></app-footer>

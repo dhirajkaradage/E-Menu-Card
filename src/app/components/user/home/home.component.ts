@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { CategoryService } from "src/app/services/category/category.service";
 import { HotelService } from "src/app/services/hotel/hotel.service";
 import { UserService } from "src/app/services/user/user.service";
+import Swal from "sweetalert2";
 
 @Component({
   selector: "app-home",
@@ -46,6 +47,29 @@ export class HomeComponent {
   }
 
   addToCart(product: any) {
-    console.log("this is selected product ", product);
+    let localStorateCart = localStorage.getItem("productsArray");
+    console.log("local ", localStorateCart);
+    if (localStorateCart) {
+      let data: Array<any> = JSON.parse(localStorateCart);
+      console.log("old data ", data);
+      data.push(product);
+      localStorage.setItem("productsArray", JSON.stringify(data));
+      Swal.fire({
+        icon: "success",
+        title: "Success",
+        text: "Product Added In The Cart Successfully",
+        timer: 1000,
+      });
+    } else {
+      let productsArray = [];
+      productsArray.push(product);
+      localStorage.setItem("productsArray", JSON.stringify(productsArray));
+      Swal.fire({
+        icon: "success",
+        title: "Success",
+        text: "Product Added In The Cart Successfully",
+        timer: 1000,
+      });
+    }
   }
 }

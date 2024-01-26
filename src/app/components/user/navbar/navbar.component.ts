@@ -49,4 +49,11 @@ export class NavbarComponent {
     console.log("thsi is category id ", categoryId);
     this.userService.setCategory(categoryId);
   }
+
+  goToHome() {
+    this.router.navigate([`hotel/${this.hotelId}`]);
+  }
+  goToCart() {
+    this.router.navigate([`hotel/${this.hotelId}/cart`]);
+  }
 }

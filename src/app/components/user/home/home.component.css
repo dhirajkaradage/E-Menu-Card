@@ -66,9 +66,9 @@ body {
   color: rgba(0, 0, 0, 0.1);
 }
 
-.card .imgBox {
+.card .imgBox img {
   position: relative;
-  width: 50% !important;
+  width: 100% !important;
 
   display: flex;
   justify-content: center;
