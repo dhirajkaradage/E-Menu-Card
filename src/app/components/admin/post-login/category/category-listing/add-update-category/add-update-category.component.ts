@@ -5,8 +5,10 @@ import {
   Validators,
   FormBuilder,
 } from "@angular/forms";
+import { ActivatedRoute, Router } from "@angular/router";
 import { CategoryService } from "src/app/services/category/category.service";
 import { HotelService } from "src/app/services/hotel/hotel.service";
+import Swal from "sweetalert2";
 
 @Component({
   selector: "app-add-update-category",
@@ -22,9 +24,17 @@ export class AddUpdateCategoryComponent {
   constructor(
     private fb: FormBuilder,
     private categoryService: CategoryService,
-    private hotelService: HotelService
+    private hotelService: HotelService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {}
   ngOnInit() {
+    this.categoryId = this.activatedRoute.snapshot.paramMap.get("id");
+    console.log("this is id from listing page ", this.categoryId);
+    if (this.categoryId) {
+      this.isEdit = true;
+      this.getCategoryById();
+    }
     this.getHotelList();
     this.createForm();
   }
@@ -36,6 +46,15 @@ export class AddUpdateCategoryComponent {
         id: [null, Validators.required],
       }),
     });
+  }
+
+  get control() {
+    return this.addUpdateCategoryForm.controls;
+  }
+
+  get hotelControl() {
+    let group = this.addUpdateCategoryForm.get("hotel") as FormGroup;
+    return group.controls;
   }
 
   getHotelList() {
@@ -50,6 +69,19 @@ export class AddUpdateCategoryComponent {
     });
   }
 
+  getCategoryById() {
+    this.categoryService.getCategoryById(this.categoryId).subscribe({
+      next: (res) => {
+        if (res) {
+          console.log("res ", res);
+          this.control["name"].patchValue(res.name);
+          this.hotelControl["id"].patchValue(res.hotel.id);
+        }
+      },
+      error: (error) => {},
+    });
+  }
+
   createCategory() {
     if (this.addUpdateCategoryForm.valid) {
       this.categoryService
@@ -57,9 +89,24 @@ export class AddUpdateCategoryComponent {
         .subscribe({
           next: (res) => {
             console.log("thsi is res ", res);
+            Swal.fire({
+              icon: "success",
+              title: "Success",
+              text: res.message,
+              timer: 4000,
+            });
+            this.router.navigate(["/admin/category/listing"]);
           },
           error: (error) => {
             console.log("this is error ", error);
+            if (error.status == 412) {
+              Swal.fire({
+                icon: "error",
+                title: "Invalid",
+                text: error.error.errorMessage,
+                timer: 4000,
+              });
+            }
           },
         });
     } else {
@@ -74,13 +121,32 @@ export class AddUpdateCategoryComponent {
         .subscribe({
           next: (res) => {
             console.log("thsi is res ", res);
+            Swal.fire({
+              icon: "success",
+              title: "Success",
+              text: res.message,
+              timer: 4000,
+            });
+            this.router.navigate(["/admin/category/listing"]);
           },
           error: (error) => {
             console.log("this is error ", error);
+            if (error.status == 412) {
+              Swal.fire({
+                icon: "error",
+                title: "Invalid",
+                text: error.error.errorMessage,
+                timer: 4000,
+              });
+            }
           },
         });
     } else {
       this.addUpdateCategoryForm.markAllAsTouched();
     }
+  }
+
+  submit() {
+    this.isEdit ? this.updateCategoryById() : this.createCategory();
   }
 }

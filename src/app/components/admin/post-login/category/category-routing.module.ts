@@ -12,7 +12,7 @@ const routes: Routes = [
   },
   { path: 'add', component: AddUpdateCategoryComponent, pathMatch: 'full' },
   {
-    path: 'update/:id',
+    path: 'edit/:id',
     component: AddUpdateCategoryComponent,
     pathMatch: 'full',
   },

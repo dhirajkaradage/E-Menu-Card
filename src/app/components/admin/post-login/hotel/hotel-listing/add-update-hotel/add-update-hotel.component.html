@@ -5,77 +5,136 @@
       <h1>{{ isEdit ? "Edit Hotel" : "Add Hotel" }}</h1>
     </div>
     <form [formGroup]="addUpdateHotelForm">
-      {{ addUpdateHotelForm.value | json }}
       <div class="form-body">
         <div class="row">
           <div class="col-md-4">
             <div class="form-group mt-3">
               <label for="" class="form-label">Name</label>
-              <input type="text" formControlName="name" class="form-control" />
+              <input
+                type="text"
+                formControlName="name"
+                class="form-control"
+                [ngClass]="{
+                  'is-invalid':
+                    control['name'].invalid &&
+                    (control['name'].dirty || control['name'].touched)
+                }"
+              />
+              <small
+                class="text-danger"
+                *ngIf="
+                  control['name'].invalid &&
+                  (control['name'].dirty || control['name'].touched)
+                "
+                >Name is mandatory</small
+              >
             </div>
           </div>
           <div class="col-md-4">
             <div class="form-group mt-3">
-              <label for="" class="form-label">mobileNumber</label>
+              <label for="" class="form-label">Mobile Number</label>
               <input
                 type="text"
                 maxlength="10"
                 formControlName="mobileNumber"
                 class="form-control"
+                [ngClass]="{
+                  'is-invalid':
+                    control['mobileNumber'].invalid &&
+                    (control['mobileNumber'].dirty ||
+                      control['mobileNumber'].touched)
+                }"
               />
+              <small
+                class="text-danger"
+                *ngIf="
+                  control['mobileNumber'].invalid &&
+                  (control['mobileNumber'].dirty ||
+                    control['mobileNumber'].touched)
+                "
+                >Mobile Number is mandatory</small
+              >
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-md-4">
-            <div class="form-group mt-3">
+            <div class="form-group mt-3 d-flex gap-3">
               <label for="" class="form-label">Type :- </label><br />
 
-              <input
-                type="radio"
-                formControlName="type"
-                name="type"
-                value="VEG"
-                id="veg"
-              />
-              <label for="veg">Veg</label>
-
-              <input
-                type="radio"
-                formControlName="type"
-                name="type"
-                value="NON_VEG"
-                id="nonVeg"
-              />
-              <label for="nonVeg">Non-Veg</label>
-
-              <input
-                type="radio"
-                formControlName="type"
-                name="type"
-                value="VEG_AND_NON_VEG"
-                id="both"
-              />
-              <label for="both">Both</label>
+              <div class="form-group">
+                <input
+                  type="radio"
+                  formControlName="type"
+                  name="type"
+                  value="VEG"
+                  id="veg"
+                />
+                <label for="veg">Veg</label>
+              </div>
+              <div class="form-group">
+                <input
+                  type="radio"
+                  formControlName="type"
+                  name="type"
+                  value="NON_VEG"
+                  id="nonVeg"
+                />
+                <label for="nonVeg">Non-Veg</label>
+              </div>
+              <div class="form-group">
+                <input
+                  type="radio"
+                  formControlName="type"
+                  name="type"
+                  value="VEG_AND_NON_VEG"
+                  id="both"
+                />
+                <label for="both">Both</label>
+              </div>
             </div>
+            <small
+              class="text-danger"
+              *ngIf="
+                control['type'].invalid &&
+                (control['type'].dirty || control['type'].touched)
+              "
+              >Type is mandatory</small
+            >
           </div>
 
-          <div class="col-md-12">
+          <div class="col-md-12 mt-3">
             <div class="row" formGroupName="address">
               <h5>Address</h5>
               <div class="col-md-4">
-                <div class="form-group">
-                  <label for="" class="form-label">pincode</label>
+                <div class="form-group mt-2">
+                  <label for="" class="form-label">Pin</label>
                   <input
                     type="text"
                     formControlName="pincode"
                     class="form-control"
+                    [ngClass]="{
+                      'is-invalid':
+                        addressControl['pincode'].invalid &&
+                        (addressControl['pincode'].dirty ||
+                          addressControl['pincode'].touched)
+                    }"
                   />
+                  <small
+                    class="text-danger"
+                    *ngIf="
+                      addressControl['pincode'].invalid &&
+                      (addressControl['pincode'].dirty ||
+                        addressControl['pincode'].touched)
+                    "
+                  >
+                    Pincode is mandatory
+                  </small>
                 </div>
               </div>
               <div class="col-md-4">
-                <div class="form-group">
-                  <label for="" class="form-label">country</label>
+                <div class="form-group mt-2">
+                  <label for="" class="form-label">Country</label>
                   <input
                     type="text"
                     formControlName="country"
@@ -84,8 +143,8 @@
                 </div>
               </div>
               <div class="col-md-4">
-                <div class="form-group">
-                  <label for="" class="form-label">state</label>
+                <div class="form-group mt-2">
+                  <label for="" class="form-label">State</label>
                   <input
                     type="text"
                     formControlName="state"
@@ -94,8 +153,8 @@
                 </div>
               </div>
               <div class="col-md-4">
-                <div class="form-group">
-                  <label for="" class="form-label">district</label>
+                <div class="form-group mt-2">
+                  <label for="" class="form-label">District</label>
                   <input
                     type="text"
                     formControlName="district"
@@ -104,8 +163,8 @@
                 </div>
               </div>
               <div class="col-md-4">
-                <div class="form-group">
-                  <label for="" class="form-label">city</label>
+                <div class="form-group mt-2">
+                  <label for="" class="form-label">City</label>
                   <input
                     type="text"
                     formControlName="city"
@@ -114,8 +173,8 @@
                 </div>
               </div>
               <div class="col-md-4">
-                <div class="form-group">
-                  <label for="" class="form-label">landmark</label>
+                <div class="form-group mt-2">
+                  <label for="" class="form-label">Landmark</label>
                   <input
                     type="text"
                     formControlName="landmark"
@@ -123,16 +182,16 @@
                   />
                 </div>
               </div>
-              <div class="col-md-4">
+              <!-- <div class="col-md-4">
                 <div class="form-group">
-                  <label for="" class="form-label">shopNumber</label>
+                  <label for="" class="form-label">Shop Number</label>
                   <input
                     type="text"
                     formControlName="shopNumber"
                     class="form-control"
                   />
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
           <div class="col-md-12">
@@ -152,13 +211,19 @@
 
         <div class="d-flex justify-content-start gap-2 mt-5">
           <button
-            (click)="onSubmit()"
+            (click)="submit()"
             type="submit"
             class="btn btn-primary col-2"
           >
             Submit
           </button>
-          <button type="submit" class="btn btn-secondary col-2">Cancel</button>
+          <button
+            type="submit"
+            class="btn btn-secondary col-2"
+            [routerLink]="['/admin/hotel/listing']"
+          >
+            Cancel
+          </button>
         </div>
       </div>
     </form>

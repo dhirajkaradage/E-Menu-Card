@@ -12,27 +12,23 @@
       </button>
     </div>
 
-    <div class="table table-responsive">
+    <div class="table table-responsive mt-5">
       <table class="table">
         <thead>
           <tr>
+            <td>Category Name</td>
             <td>Hotel Name</td>
-            <td>Type</td>
-            <td>Address</td>
-            <td>About</td>
             <td>Action</td>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let category of categoryList; let i = index">
             <td>{{ category?.name }}</td>
-            <td>{{ category?.type }}</td>
-            <td>{{ category?.address }}</td>
-            <td>{{ category?.about }}</td>
+            <td>{{ category?.hotel?.name }}</td>
             <td class="btn-group gap-2">
               <button
                 class="btn btn-outline-success"
-                [routerLink]="['/admin/hotel/edit', i]"
+                [routerLink]="['/admin/category/edit', category.id]"
                 routerLinkActive="router-link-active"
               >
                 <span class="material-symbols-outlined"> edit </span>
