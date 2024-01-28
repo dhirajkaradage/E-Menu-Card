@@ -25,4 +25,16 @@ export class OrderService {
   getAllOrders(): Observable<any> {
     return this.http.get(`${baseUrl}orderList`);
   }
+
+  getOrderById(orderId: any): Observable<any> {
+    return this.http.get(`${baseUrl}viewOrder/${orderId}`);
+  }
+
+  getOrdersPagination(page: number, size: number): Observable<any> {
+    let params = {
+      page: page,
+      size: size,
+    };
+    return this.http.get(`${baseUrl}allOrders`, { params: params });
+  }
 }

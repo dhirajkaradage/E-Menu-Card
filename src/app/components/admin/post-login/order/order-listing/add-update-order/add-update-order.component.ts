@@ -7,10 +7,10 @@ import { FormGroup , FormControl, FormControlName, Validators} from '@angular/fo
   styleUrls: ['./add-update-order.component.css']
 })
 export class AddUpdateOrderComponent {
-  addUpdateOrderForm!: FormGroup
+  orderForm!: FormGroup
 
   ngOnInit(){
-    this.addUpdateOrderForm = new FormGroup({
+    this.orderForm = new FormGroup({
       name: new FormControl('',Validators.required),
       type:new FormControl('',Validators.required),
       address:new FormControl('',Validators.required),
@@ -19,7 +19,7 @@ export class AddUpdateOrderComponent {
   }
 
   onSubmit(){
-    console.log(this.addUpdateOrderForm);
+    console.log(this.orderForm);
     
   }
 
