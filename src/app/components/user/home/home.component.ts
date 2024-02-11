@@ -47,10 +47,10 @@ export class HomeComponent {
   }
 
   addToCart(product: any) {
-    let localStorateCart = localStorage.getItem("productsArray");
-    console.log("local ", localStorateCart);
-    if (localStorateCart) {
-      let data: Array<any> = JSON.parse(localStorateCart);
+    let localStorageCart = localStorage.getItem("productsArray");
+    console.log("local ", localStorageCart);
+    if (localStorageCart) {
+      let data: Array<any> = JSON.parse(localStorageCart);
       console.log("old data ", data);
       data.push(product);
       localStorage.setItem("productsArray", JSON.stringify(data));

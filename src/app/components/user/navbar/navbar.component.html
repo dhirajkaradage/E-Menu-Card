@@ -19,7 +19,7 @@
 
   <div class="category-list-section">
     <ul class="category-list">
-      <li class="category"
+      <li class="category" (click)="goToHome()"
         *ngFor="let category of categoryList"
         (click)="setActiveCategory(category.id)"
       >

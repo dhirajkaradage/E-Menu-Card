@@ -2,6 +2,7 @@
 <div class="body">
   <div class="cart-wrapper">
     <div class="product-section" [formGroup]="orderForm">
+      {{ orderForm.value | json }}
       <div class="row">
         <div class="card p-4">
           <h1>Cart Details</h1>
@@ -22,6 +23,7 @@
                 <input
                   type="text"
                   class="form-control"
+                  maxlength="10" minlength="10"
                   formControlName="customerMobileName"
                 />
               </div>
@@ -45,6 +47,19 @@
               {{ product.name }}
             </div>
             <div class="col-md-2">{{ product.sellingPrice }} Rs</div>
+            <div class="col-md-2">
+              <button (click)="removeProductFromCart(i)" class="btn btn-outline-danger btn-sm d-flex">
+                <span class="material-symbols-outlined"> delete </span>
+              </button>
+            </div>
+          </div>
+
+          <div class="container d-flex justify-content-end">
+            Cart Total : {{ total }}
+          </div>
+
+          <div class="container d-flex justify-content-center mt-3">
+            <button (click)="placeOrder()" class="btn btn-outline-primary">Place Order</button>
           </div>
         </div>
       </div>
