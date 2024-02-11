@@ -14,18 +14,51 @@
                   type="text"
                   class="form-control"
                   formControlName="customerName"
+                  [ngClass]="{
+                    'is-invalid':
+                      control['customerName'].invalid &&
+                      (control['customerName'].dirty ||
+                        control['customerName'].touched)
+                  }"
                 />
+                <small
+                  class="text-danger"
+                  *ngIf="
+                    control['customerName'].invalid &&
+                    (control['customerName'].dirty ||
+                      control['customerName'].touched)
+                  "
+                >
+                  Name is mandatory
+                </small>
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
-                <label for="" class="form-label">Customer Name</label>
+                <label for="" class="form-label">Customer Mobile</label>
                 <input
                   type="text"
                   class="form-control"
-                  maxlength="10" minlength="10"
+                  maxlength="10"
+                  minlength="10"
                   formControlName="customerMobileName"
+                  [ngClass]="{
+                    'is-invalid':
+                      control['customerMobileName'].invalid &&
+                      (control['customerMobileName'].dirty ||
+                        control['customerMobileName'].touched)
+                  }"
                 />
+                <small
+                class="text-danger"
+                *ngIf="
+                  control['customerMobileName'].invalid &&
+                  (control['customerMobileName'].dirty ||
+                    control['customerMobileName'].touched)
+                "
+              >
+              Mobile is mandatory
+              </small>
               </div>
             </div>
           </div>
@@ -48,7 +81,10 @@
             </div>
             <div class="col-md-2">{{ product.sellingPrice }} Rs</div>
             <div class="col-md-2">
-              <button (click)="removeProductFromCart(i)" class="btn btn-outline-danger btn-sm d-flex">
+              <button
+                (click)="removeProductFromCart(i)"
+                class="btn btn-outline-danger btn-sm d-flex"
+              >
                 <span class="material-symbols-outlined"> delete </span>
               </button>
             </div>
@@ -59,7 +95,9 @@
           </div>
 
           <div class="container d-flex justify-content-center mt-3">
-            <button (click)="placeOrder()" class="btn btn-outline-primary">Place Order</button>
+            <button (click)="placeOrder()" class="btn btn-outline-primary">
+              Place Order
+            </button>
           </div>
         </div>
       </div>

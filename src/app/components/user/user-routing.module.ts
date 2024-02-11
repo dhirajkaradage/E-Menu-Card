@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: "", redirectTo: "hotel/:id", pathMatch: "full" },
   { path: "hotel/:id", component: HomeComponent, pathMatch: "full" },
   { path: "hotel/:id/cart", component: CartComponent, pathMatch: "full" },
-  { path: "hotel/:id/order", component: OrderComponent, pathMatch: "full" },
+  { path: "hotel/:id/orders", component: OrderComponent, pathMatch: "full" },
 ];
 
 @NgModule({

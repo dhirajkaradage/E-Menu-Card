@@ -28,3 +28,7 @@
   width: 100%;
   padding: 2rem 3rem 2rem 0rem;
 }
+
+.pointer {
+  cursor: pointer !important;
+}

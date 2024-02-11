@@ -1,6 +1,6 @@
 <div class="navbar">
   <div class="main-nav">
-    <div class="logo" (click)="goToHome()" >LOGO</div>
+    <div title="Home" class="logo cursor-pointer" (click)="goToHome()" >LOGO</div>
     <div class="search-bar">
       <div class="input-group">
         <input type="text" class="form-control" />
@@ -8,10 +8,10 @@
       </div>
     </div>
     <div class="card-order-section d-flex gap-4">
-      <span class="cart-icon category" (click)="goToCart()" 
+      <span title="My Cart" class="cart-icon category" (click)="goToCart()" 
         ><span class="material-symbols-outlined"> shopping_cart </span></span
       >
-      <span class="order-icon category"
+      <span title="My Orders" class="order-icon category" (click)="goToOrders()" 
         ><span class="material-symbols-outlined"> list_alt </span></span
       >
     </div>
