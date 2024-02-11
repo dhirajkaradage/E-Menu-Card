@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
-import { FormArray, FormBuilder, FormGroup } from "@angular/forms";
+import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { OrderService } from "src/app/services/order/order.service";
 
 @Component({
   selector: "app-cart",
@@ -8,9 +9,10 @@ import { FormArray, FormBuilder, FormGroup } from "@angular/forms";
 })
 export class CartComponent {
   orderForm!: FormGroup;
-  isCartEmpty: boolean = true
-  productList: Array<any> = []
-  constructor(private fb: FormBuilder) {}
+  isCartEmpty: boolean = true;
+  productList: Array<any> = [];
+  total: number = 0;
+  constructor(private fb: FormBuilder, private orderService: OrderService) {}
   ngOnInit() {
     this.createForm();
 
@@ -20,17 +22,23 @@ export class CartComponent {
       let data: Array<any> = JSON.parse(localStorateCart);
       console.log("this is data ", data);
       if (data.length > 0) {
-        this.productList = data
+        this.productList = data;
         for (let index = 0; index < data.length; index++) {
           const product = data[index];
           console.log("local storate product ", product);
+          this.total += parseInt(product.sellingPrice);
+          this.control["totalAmount"].patchValue(this.total);
           this.productListArr.push(this.returnCommonGroup(product));
         }
       }
-      this.isCartEmpty = false
+      this.isCartEmpty = false;
     } else {
-      this.isCartEmpty = true
+      this.isCartEmpty = true;
     }
+  }
+
+  get control() {
+    return this.orderForm.controls;
   }
 
   get productListArr() {
@@ -40,9 +48,9 @@ export class CartComponent {
   createForm() {
     this.orderForm = this.fb.group({
       discount: [null],
-      customerName: [""],
-      customerMobileName: [""],
-      totalAmount: [null],
+      customerName: ["", Validators.required],
+      customerMobileName: ["", Validators.required],
+      totalAmount: [null, Validators.required],
       productList: this.fb.array([]),
     });
   }
@@ -53,6 +61,36 @@ export class CartComponent {
       name: product.name,
       imageLabel: product.imageLabel,
       sellingPrice: product.sellingPrice,
+    });
+  }
+
+  removeProductFromCart(index: number) {
+    this.productListArr.removeAt(index);
+    this.productList.splice(index, 1);
+    localStorage.setItem("productsArray", JSON.stringify(this.productList));
+    this.calculateTotal();
+  }
+
+  calculateTotal() {
+    this.total = 0;
+    if (this.productList.length > 0) {
+      for (let index = 0; index < this.productList.length; index++) {
+        const product = this.productList[index];
+
+        this.total += parseInt(product.sellingPrice);
+        this.control["totalAmount"].patchValue(this.total);
+      }
+    }
+  }
+
+  placeOrder() {
+    this.orderService.createOrder(this.orderForm.value).subscribe({
+      next: (res) => {
+        console.log("thsi is res ", res);
+      },
+      error: (error) => {
+        console.log("thsi is error ", error);
+      },
     });
   }
 }
