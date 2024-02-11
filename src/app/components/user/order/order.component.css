@@ -1,0 +1,12 @@
+.cart-wrapper {
+    width: 100%;
+    min-height: 90vh;
+}
+
+.product-section {
+    padding: 4rem 15rem;
+}
+
+.image-view img {
+    width: 50%;
+}

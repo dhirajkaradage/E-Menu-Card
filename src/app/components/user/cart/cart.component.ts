@@ -1,6 +1,8 @@
 import { Component } from "@angular/core";
 import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { ActivatedRoute, Router } from "@angular/router";
 import { OrderService } from "src/app/services/order/order.service";
+import Swal from "sweetalert2";
 
 @Component({
   selector: "app-cart",
@@ -12,9 +14,20 @@ export class CartComponent {
   isCartEmpty: boolean = true;
   productList: Array<any> = [];
   total: number = 0;
-  constructor(private fb: FormBuilder, private orderService: OrderService) {}
+  hotelId: any;
+  constructor(
+    private fb: FormBuilder,
+    private orderService: OrderService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
   ngOnInit() {
     this.createForm();
+
+    const id = this.route.snapshot.paramMap.get("id");
+    if (id) {
+      this.hotelId = id;
+    }
 
     let localStorateCart = localStorage.getItem("productsArray");
     console.log("local ", localStorateCart);
@@ -84,13 +97,31 @@ export class CartComponent {
   }
 
   placeOrder() {
-    this.orderService.createOrder(this.orderForm.value).subscribe({
-      next: (res) => {
-        console.log("thsi is res ", res);
-      },
-      error: (error) => {
-        console.log("thsi is error ", error);
-      },
-    });
+    if (this.orderForm.valid) {
+      this.orderService.createOrder(this.orderForm.value).subscribe({
+        next: (res) => {
+          console.log("thsi is res ", res);
+          Swal.fire({
+            icon: "success",
+            title: "Success",
+            text: "Order Placed Successfully",
+            timer: 2000,
+          });
+          this.router.navigate([`/hotel/${this.hotelId}/orders`])
+        },
+        error: (error) => {
+          console.log("thsi is error ", error);
+        },
+      });
+    } else {
+      console.log("invalid form ");
+      this.orderForm.markAllAsTouched();
+      Swal.fire({
+        title: "Invalid",
+        text: "Please fill all mandatory fields to place order",
+        timer: 2000,
+        icon: "info",
+      });
+    }
   }
 }

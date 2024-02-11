@@ -56,4 +56,8 @@ export class NavbarComponent {
   goToCart() {
     this.router.navigate([`hotel/${this.hotelId}/cart`]);
   }
+  goToOrders(){
+    this.router.navigate([`hotel/${this.hotelId}/orders`]);
+
+  }
 }
