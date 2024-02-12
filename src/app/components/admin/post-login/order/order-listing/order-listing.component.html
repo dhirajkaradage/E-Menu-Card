@@ -16,25 +16,25 @@
       <table class="table">
         <thead>
           <tr>
-            <td>Hotel Name</td>
-            <td>Type</td>
-            <td>Address</td>
-            <td>About</td>
+            <td>Customer Name</td>
+            <td>Customer Mobile</td>
+            <td>Products</td>
+            <td>Total Amount</td>
             <td>Action</td>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let order of orderList; let i = index">
-            <td>{{ order.name }}</td>
-            <td>{{ order.type }}</td>
-            <td>{{ order.address }}</td>
-            <td>{{ order.about }}</td>
+            <td>{{ order.customerName }}</td>
+            <td>{{ order.customerMobileName }}</td>
+            <td>
+              <div *ngFor="let product of order.productList">
+                {{ product.name }}
+              </div>
+            </td>
+            <td>{{ order.totalAmount }}</td>
             <td class="btn-group gap-2">
-              <button
-                class="btn btn-outline-success"
-                [routerLink]="['/admin/hotel/edit', i]"
-                routerLinkActive="router-link-active"
-              >
+              <button class="btn btn-outline-success">
                 <span class="material-symbols-outlined"> edit </span>
               </button>
               <button class="btn btn-outline-danger">
